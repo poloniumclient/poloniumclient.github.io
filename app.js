@@ -90,23 +90,17 @@ const ro = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-// ---------- LIVE COUNTER (MongoDB) ----------
-// +1 przy wejściu (insert), −1 automatycznie przez TTL (~60–90 s po wyjściu).
-// Setup w Atlas (M0 512 MB starczy):
-//   1. Cluster → Collections → utwórz bazę np. `polonium`, kolekcję `presence`
-//   2. Na kolekcji `presence` załóż index TTL: { "exp": 1 }, expireAfterSeconds: 0
-//      (mongosh: db.presence.createIndex({exp:1},{expireAfter:0}))
-//   3. App Services → nowa App → Data API → włącz → stwórz API key TYLKO do tej kolekcji
-//   4. Wklej niżej endpoint + key + dataSource (nazwa clustera) i gotowe.
-// Bez configu karta pokazuje pauzę — zero ściemy.
-const MONGO_API = null;
-// const MONGO_API = {
-//   base: 'https://data.mongodb-api.com/app/XXXX/endpoint/data/v1',
-//   key: 'TWOJ_DATA_API_KEY',
-//   dataSource: 'Cluster0',
-//   database: 'polonium',
-//   collection: 'presence'
-// };
+// ---------- LIVE COUNTER (Supabase) ----------
+// +1 przy wejściu (upsert wiersza karty), −1 sam wypada z liczby po ~60 s
+// (liczymy tylko wiersze odświeżone w ostatniej minucie, heartbeat co 20 s).
+// Setup (2 min, SQL Editor w dashboardzie Supabase):
+//   create table if not exists presence (id text primary key, seen timestamptz default now());
+//   alter table presence enable row level security;
+//   create policy "open" on presence for all to anon using (true) with check (true);
+// Klucz anon: Project Settings → API → anon public (ten klucz JEST publiczny z natury,
+// nigdy nie wklejaj tu service_role ani hasła do bazy).
+const SUPABASE = null;
+// const SUPABASE = { url: 'https://anecgwskrxgedvkablwz.supabase.co', anon: 'WKLJK_ANON_KEY' };
 
 const __liveEls = [document.getElementById('live-big')].filter(Boolean);
 function paintLive(n) {
@@ -114,31 +108,23 @@ function paintLive(n) {
   __liveEls.forEach(el => el.textContent = t);
 }
 
-if (MONGO_API) {
-  const H = { 'Content-Type': 'application/json', 'api-key': MONGO_API.key };
-  const D = { dataSource: MONGO_API.dataSource, database: MONGO_API.database, collection: MONGO_API.collection };
-  // unikalne id karty (nowa karta = nowy wpis = +1)
+if (SUPABASE && window.supabase) {
+  const sb = window.supabase.createClient(SUPABASE.url, SUPABASE.anon);
   let tabId = sessionStorage.getItem('polonium-tab');
-  if (!tabId) { tabId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()); sessionStorage.setItem('polonium-tab', tabId); }
-  const expDate = () => ({ $date: { $numberLong: String(Date.now() + 35000) } });
-  const beat = () => fetch(MONGO_API.base + '/action/updateOne', {
-    method: 'POST', headers: H,
-    body: JSON.stringify({ ...D, filter: { tabId }, update: { $set: { tabId, ts: { $date: { $numberLong: String(Date.now()) } }, exp: expDate() } }, upsert: true })
-  }).catch(() => {});
-  const count = () => fetch(MONGO_API.base + '/action/aggregate', {
-    method: 'POST', headers: H,
-    body: JSON.stringify({ ...D, pipeline: [{ $count: 'n' }] })
-  }).then(r => r.json()).then(j => {
-    const n = j.documents && j.documents[0] ? j.documents[0].n : 0;
-    paintLive(n);
-  }).catch(() => {});
+  if (!tabId) {
+    tabId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(36).slice(2));
+    sessionStorage.setItem('polonium-tab', tabId);
+  }
+  const fresh = () => new Date(Date.now() - 60000).toISOString();
+  const beat = () => sb.from('presence').upsert({ id: tabId, seen: new Date().toISOString() }).then(() => {});
+  const count = () => sb.from('presence').select('id', { count: 'exact', head: true }).gt('seen', fresh())
+    .then(({ count: n }) => { if (typeof n === 'number') paintLive(n); }).catch(() => {});
   beat(); count();
-  setInterval(beat, 15000);   // heartbeat odnawia TTL
+  setInterval(beat, 20000);   // heartbeat: karta żyje
   setInterval(count, 10000);  // odśwież liczbę
-} else if (window.firebase && false) {
-  paintLive('—');
+  window.addEventListener('pagehide', () => { try { sb.from('presence').delete().eq('id', tabId); } catch {} });
 } else {
-  paintLive('—');
+  paintLive('—'); // brak configu = pauza, zero ściemy
 }
 
 // dvd screensaver
