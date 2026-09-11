@@ -90,12 +90,50 @@ const ro = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-// fake online drift
-let online = 12400;
-setInterval(() => {
-  online += Math.round(Math.random() * 40 - 18);
-  document.getElementById('online').textContent = online.toLocaleString('pl-PL');
-}, 3000);
+// ---------- LIVE COUNTER ----------
+// +1 gdy ktoś otwiera stronę, -1 gdy zamyka (presence w Firebase RTDB).
+// Żeby licznik był WSPÓLNY dla wszystkich, wklej config z Firebase Console:
+//   1. console.firebase.google.com → nowy projekt → Realtime Database → utworz bazę
+//   2. Rules: { "rules": { "presence": { ".read": true, ".write": true } } }
+//   3. Authentication → Sign-in method → Anonymous → włącz
+//   4. Project settings → Your apps → Web → skopiuj firebaseConfig i wklej niżej
+// Bez configu strona pokazuje licznik symulowany (żeby layout nie stał pusty).
+const FIREBASE_CONFIG = null;
+// const FIREBASE_CONFIG = { apiKey:"...", authDomain:"....firebaseapp.com", databaseURL:"https://....firebasedatabase.app", projectId:"..." };
+
+const __liveEls = [document.getElementById('online'), document.getElementById('live-big')].filter(Boolean);
+function paintLive(n) {
+  const t = Number(n).toLocaleString('pl-PL');
+  __liveEls.forEach(el => el.textContent = t);
+}
+
+if (FIREBASE_CONFIG && window.firebase) {
+  firebase.initializeApp(FIREBASE_CONFIG);
+  const db = firebase.database();
+  firebase.auth().signInAnonymously()
+    .then(() => {
+      const listRef = db.ref('presence/polonium');
+      const me = listRef.push(true);   // +1
+      me.onDisconnect().remove();      // -1 nawet przy crashu / utracie neta
+      window.addEventListener('pagehide', () => me.remove()); // -1 od razu przy wyjściu
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') me.remove();
+      });
+      listRef.on('value', s => paintLive(s.numChildren()));   // live liczba
+    })
+    .catch(() => fallbackLive());
+} else {
+  fallbackLive();
+}
+
+let __live = 12400;
+function fallbackLive() {
+  paintLive(__live);
+  setInterval(() => {
+    __live += Math.round(Math.random() * 40 - 18);
+    paintLive(__live);
+  }, 3000);
+}
 
 // dvd screensaver
 (function dvd() {
