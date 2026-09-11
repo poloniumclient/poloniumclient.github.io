@@ -99,8 +99,7 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 //   create policy "open" on presence for all to anon using (true) with check (true);
 // Klucz anon: Project Settings → API → anon public (ten klucz JEST publiczny z natury,
 // nigdy nie wklejaj tu service_role ani hasła do bazy).
-const SUPABASE = null;
-// const SUPABASE = { url: 'https://anecgwskrxgedvkablwz.supabase.co', anon: 'WKLJK_ANON_KEY' };
+const SUPABASE = { url: 'https://anecgwskrxgedvkablwz.supabase.co', anon: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFuZWNnd3NrcnhnZWR2a2FibHd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxMjU0ODMsImV4cCI6MjEwNDcwMTQ4M30._EABejpum6WMFergeTnIt1gcYTaI9FHllaGxXwSV3y8' };
 
 const __liveEls = [document.getElementById('live-big')].filter(Boolean);
 function paintLive(n) {
