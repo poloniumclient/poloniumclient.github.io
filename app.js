@@ -90,16 +90,23 @@ const ro = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-// ---------- LIVE COUNTER ----------
-// +1 gdy ktoś otwiera stronę, -1 gdy zamyka (presence w Firebase RTDB).
-// Żeby licznik był WSPÓLNY dla wszystkich, wklej config z Firebase Console:
-//   1. console.firebase.google.com → nowy projekt → Realtime Database → utworz bazę
-//   2. Rules: { "rules": { "presence": { ".read": true, ".write": true } } }
-//   3. Authentication → Sign-in method → Anonymous → włącz
-//   4. Project settings → Your apps → Web → skopiuj firebaseConfig i wklej niżej
-// Bez configu strona pokazuje pauzę — zero ściemy z liczbami z sufitu.
-const FIREBASE_CONFIG = null;
-// const FIREBASE_CONFIG = { apiKey:"...", authDomain:"....firebaseapp.com", databaseURL:"https://....firebasedatabase.app", projectId:"..." };
+// ---------- LIVE COUNTER (MongoDB) ----------
+// +1 przy wejściu (insert), −1 automatycznie przez TTL (~60–90 s po wyjściu).
+// Setup w Atlas (M0 512 MB starczy):
+//   1. Cluster → Collections → utwórz bazę np. `polonium`, kolekcję `presence`
+//   2. Na kolekcji `presence` załóż index TTL: { "exp": 1 }, expireAfterSeconds: 0
+//      (mongosh: db.presence.createIndex({exp:1},{expireAfter:0}))
+//   3. App Services → nowa App → Data API → włącz → stwórz API key TYLKO do tej kolekcji
+//   4. Wklej niżej endpoint + key + dataSource (nazwa clustera) i gotowe.
+// Bez configu karta pokazuje pauzę — zero ściemy.
+const MONGO_API = null;
+// const MONGO_API = {
+//   base: 'https://data.mongodb-api.com/app/XXXX/endpoint/data/v1',
+//   key: 'TWOJ_DATA_API_KEY',
+//   dataSource: 'Cluster0',
+//   database: 'polonium',
+//   collection: 'presence'
+// };
 
 const __liveEls = [document.getElementById('live-big')].filter(Boolean);
 function paintLive(n) {
@@ -107,21 +114,29 @@ function paintLive(n) {
   __liveEls.forEach(el => el.textContent = t);
 }
 
-if (FIREBASE_CONFIG && window.firebase) {
-  firebase.initializeApp(FIREBASE_CONFIG);
-  const db = firebase.database();
-  firebase.auth().signInAnonymously()
-    .then(() => {
-      const listRef = db.ref('presence/polonium');
-      const me = listRef.push(true);   // +1
-      me.onDisconnect().remove();      // -1 nawet przy crashu / utracie neta
-      window.addEventListener('pagehide', () => me.remove()); // -1 od razu przy wyjściu
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'hidden') me.remove();
-      });
-      listRef.on('value', s => paintLive(s.numChildren()));   // live liczba
-    })
-    .catch(() => paintLive('—'));
+if (MONGO_API) {
+  const H = { 'Content-Type': 'application/json', 'api-key': MONGO_API.key };
+  const D = { dataSource: MONGO_API.dataSource, database: MONGO_API.database, collection: MONGO_API.collection };
+  // unikalne id karty (nowa karta = nowy wpis = +1)
+  let tabId = sessionStorage.getItem('polonium-tab');
+  if (!tabId) { tabId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()); sessionStorage.setItem('polonium-tab', tabId); }
+  const expDate = () => ({ $date: { $numberLong: String(Date.now() + 35000) } });
+  const beat = () => fetch(MONGO_API.base + '/action/updateOne', {
+    method: 'POST', headers: H,
+    body: JSON.stringify({ ...D, filter: { tabId }, update: { $set: { tabId, ts: { $date: { $numberLong: String(Date.now()) } }, exp: expDate() } }, upsert: true })
+  }).catch(() => {});
+  const count = () => fetch(MONGO_API.base + '/action/aggregate', {
+    method: 'POST', headers: H,
+    body: JSON.stringify({ ...D, pipeline: [{ $count: 'n' }] })
+  }).then(r => r.json()).then(j => {
+    const n = j.documents && j.documents[0] ? j.documents[0].n : 0;
+    paintLive(n);
+  }).catch(() => {});
+  beat(); count();
+  setInterval(beat, 15000);   // heartbeat odnawia TTL
+  setInterval(count, 10000);  // odśwież liczbę
+} else if (window.firebase && false) {
+  paintLive('—');
 } else {
   paintLive('—');
 }
