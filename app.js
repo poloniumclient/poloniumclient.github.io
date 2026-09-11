@@ -120,7 +120,7 @@ if (SUPABASE && window.supabase) {
     .then(({ count: n }) => { if (typeof n === 'number') paintLive(n); }).catch(() => {});
   beat(); count();
   setInterval(beat, 20000);   // heartbeat: karta żyje
-  setInterval(count, 10000);  // odśwież liczbę
+  setInterval(count, 5000);   // ping bazy co 5 s, bez refreshu strony
   window.addEventListener('pagehide', () => { try { sb.from('presence').delete().eq('id', tabId); } catch {} });
 } else {
   paintLive('—'); // brak configu = pauza, zero ściemy
