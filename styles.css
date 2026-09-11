@@ -68,7 +68,7 @@ h1 em{font-style:normal;color:var(--acc);text-shadow:0 0 44px var(--acc-glow)}
 .os:hover{color:var(--txt)}
 .os.active{color:var(--acc);border-color:var(--acc);background:var(--acc-dim)}
 .vers-label{font-size:10px;text-transform:uppercase;letter-spacing:1.8px;color:var(--dim2);margin:16px 0 8px}
-#vlist,#vlist2{display:flex;gap:8px;flex-wrap:wrap}
+#vlist,#vlist2{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:660px;max-height:176px;overflow:auto;margin:10px auto 0;padding:2px}
 #vlist span,#vlist2 span{border:1px solid var(--line2);background:var(--panel);padding:8px 16px;font-size:13px;color:var(--dim);border-radius:10px;cursor:default;transition:.2s}
 #vlist span:hover,#vlist2 span:hover{color:var(--txt);border-color:var(--dim);transform:translateY(-2px)}
 #vlist span:first-child,#vlist2 span:first-child{border-color:var(--acc);color:var(--acc);background:var(--acc-dim)}
