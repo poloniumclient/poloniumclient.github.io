@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>polonium — mc client</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 18V6h5a4 4 0 0 1 0 8H8" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+  <nav><a href="#dl">download</a><a href="#feat">feat</a><a href="#vers">versions</a></nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="kicker">mc client • electron + webview</div>
+    <h1>polonium</h1>
+    <p>lekki launcher. play na środku, wersje pod spodem,<br>clickgui na right ctrl.</p>
+    <div class="row">
+      <a class="btn" id="dl-top" href="#dl">download</a>
+      <span class="ver" id="latest">v0.1.0</span>
+    </div>
+    <div class="shots">
+      <div class="shot"><b>launcher</b><span>frameless • nick • cheats? nah / obviously yes</span></div>
+      <div class="shot"><b>clickgui</b><span>rctrl / f8 / insert • combat / movement / render / hud</span></div>
+      <div class="shot"><b>themes</b><span>polonium • midnight • ghost</span></div>
+    </div>
+  </section>
+
+  <section id="feat" class="grid">
+    <div><b>rctrl menu</b><p>osobne okno webview, toggle na prawy ctrl. debounce, esc chowa.</p></div>
+    <div><b>prawdziwy start</b><p>minecraft-launcher-core pobiera pliki i odpala javę. progress na żywo.</p></div>
+    <div><b>wiele wersji</b><p id="vers-line">1.8.9 → 1.21.1, lista z backendu, nie hardcode.</p></div>
+    <div><b>themes</b><p>3 motywy w settings (dół-prawo). zero fioletu.</p></div>
+  </section>
+
+  <section id="vers">
+    <h2>versions</h2>
+    <div id="vlist"></div>
+  </section>
+
+  <section id="dl">
+    <h2>download</h2>
+    <p>windows • electron. wymaga javy 17+ (1.8.9 → java 8).</p>
+    <div class="row">
+      <a class="btn" href="https://github.com/gabeczkag/polonium.github.io/releases">releases</a>
+      <a class="btn ghost" href="https://github.com/gabeczkag/polonium.github.io">source</a>
+    </div>
+    <pre>git clone https://github.com/gabeczkag/polonium.github.io.git
+cd polonium.github.io
+npm i
+npm start</pre>
+  </section>
+</main>
+
+<footer>polonium • <span id="year"></span></footer>
+<script src="app.js"></script>
+</body>
+</html>
