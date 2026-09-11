@@ -97,14 +97,13 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 //   2. Rules: { "rules": { "presence": { ".read": true, ".write": true } } }
 //   3. Authentication → Sign-in method → Anonymous → włącz
 //   4. Project settings → Your apps → Web → skopiuj firebaseConfig i wklej niżej
-// Bez configu strona pokazuje licznik symulowany (żeby layout nie stał pusty).
+// Bez configu strona pokazuje pauzę — zero ściemy z liczbami z sufitu.
 const FIREBASE_CONFIG = null;
 // const FIREBASE_CONFIG = { apiKey:"...", authDomain:"....firebaseapp.com", databaseURL:"https://....firebasedatabase.app", projectId:"..." };
 
 const __liveEls = [document.getElementById('live-big')].filter(Boolean);
-let __live = 12400;
 function paintLive(n) {
-  const t = Number(n).toLocaleString('pl-PL');
+  const t = typeof n === 'number' ? n.toLocaleString('pl-PL') : n;
   __liveEls.forEach(el => el.textContent = t);
 }
 
@@ -122,17 +121,9 @@ if (FIREBASE_CONFIG && window.firebase) {
       });
       listRef.on('value', s => paintLive(s.numChildren()));   // live liczba
     })
-    .catch(() => fallbackLive());
+    .catch(() => paintLive('—'));
 } else {
-  fallbackLive();
-}
-
-function fallbackLive() {
-  paintLive(__live);
-  setInterval(() => {
-    __live += Math.round(Math.random() * 40 - 18);
-    paintLive(__live);
-  }, 3000);
+  paintLive('—');
 }
 
 // dvd screensaver
