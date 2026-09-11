@@ -55,14 +55,6 @@ document.querySelectorAll('.qa button').forEach(b => b.onclick = () => {
   b.querySelector('i').textContent = open ? '–' : '+';
 });
 
-// copy ip
-document.getElementById('copy-ip').onclick = async (e) => {
-  const ip = 'play.polonium.gg';
-  try { await navigator.clipboard.writeText(ip); e.target.textContent = 'skopiowano: ' + ip; }
-  catch { e.target.textContent = ip; }
-  setTimeout(() => e.target.textContent = 'kopiuj ip serwera', 2000);
-};
-
 // latest release
 fetch('https://api.github.com/repos/poloniumclient/polonium/releases/latest')
   .then(r => r.ok ? r.json() : null)
