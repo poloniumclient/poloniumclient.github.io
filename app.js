@@ -64,7 +64,7 @@ document.getElementById('copy-ip').onclick = async (e) => {
 };
 
 // latest release
-fetch('https://api.github.com/repos/poloniumclient/poloniumclient.github.io/releases/latest')
+fetch('https://api.github.com/repos/poloniumclient/polonium/releases/latest')
   .then(r => r.ok ? r.json() : null)
   .then(d => { if (d && d.tag_name) document.getElementById('latest').textContent = d.tag_name; })
   .catch(() => {});
