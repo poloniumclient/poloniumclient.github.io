@@ -101,7 +101,7 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 const FIREBASE_CONFIG = null;
 // const FIREBASE_CONFIG = { apiKey:"...", authDomain:"....firebaseapp.com", databaseURL:"https://....firebasedatabase.app", projectId:"..." };
 
-const __liveEls = [document.getElementById('online'), document.getElementById('live-big')].filter(Boolean);
+const __liveEls = [document.getElementById('live-big')].filter(Boolean);
 function paintLive(n) {
   const t = Number(n).toLocaleString('pl-PL');
   __liveEls.forEach(el => el.textContent = t);
