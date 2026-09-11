@@ -102,6 +102,7 @@ const FIREBASE_CONFIG = null;
 // const FIREBASE_CONFIG = { apiKey:"...", authDomain:"....firebaseapp.com", databaseURL:"https://....firebasedatabase.app", projectId:"..." };
 
 const __liveEls = [document.getElementById('live-big')].filter(Boolean);
+let __live = 12400;
 function paintLive(n) {
   const t = Number(n).toLocaleString('pl-PL');
   __liveEls.forEach(el => el.textContent = t);
@@ -126,7 +127,6 @@ if (FIREBASE_CONFIG && window.firebase) {
   fallbackLive();
 }
 
-let __live = 12400;
 function fallbackLive() {
   paintLive(__live);
   setInterval(() => {
