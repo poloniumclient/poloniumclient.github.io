@@ -3,54 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>polonium — mc client</title>
+<title>polonium — launcher z cheatami do minecrafta</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="bg"><div class="grid"></div><div class="glow"></div><div class="cubes"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="watermark">POLONIUM</div><div id="dvd"><svg width="120" height="34" viewBox="0 0 120 34"><rect x="1" y="1" width="118" height="32" fill="none" stroke="currentColor" stroke-width="2"/><text x="60" y="22" text-anchor="middle" font-family="Consolas,monospace" font-weight="900" font-size="14" letter-spacing="3" fill="currentColor">POLONIUM</text></svg></div></div>
+
 <header class="top">
   <div class="logo"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 18V6h5a4 4 0 0 1 0 8H8" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-  <nav><a href="#dl">download</a><a href="#feat">feat</a><a href="#vers">versions</a></nav>
+  <nav><a href="#cheaty">cheaty</a><a href="#wersje">wersje</a><a href="#pobierz">pobierz</a></nav>
 </header>
 
 <main>
   <section class="hero">
-    <div class="kicker">mc client • electron + webview</div>
+    <div class="kicker">launcher z cheatami do minecrafta</div>
     <h1>polonium</h1>
-    <p>lekki launcher. play na środku, wersje pod spodem,<br>clickgui na right ctrl.</p>
-    <div class="row">
-      <a class="btn" id="dl-top" href="#dl">download</a>
-      <span class="ver" id="latest">v0.1.0</span>
-    </div>
-    <div class="shots">
-      <div class="shot"><b>launcher</b><span>frameless • nick • cheats? nah / obviously yes</span></div>
-      <div class="shot"><b>clickgui</b><span>rctrl / f8 / insert • combat / movement / render / hud</span></div>
-      <div class="shot"><b>themes</b><span>polonium • midnight • ghost</span></div>
-    </div>
-  </section>
+    <p>play na środku. wersje pod spodem.<br>menu na prawy ctrl.</p>
 
-  <section id="feat" class="grid">
-    <div><b>rctrl menu</b><p>osobne okno webview, toggle na prawy ctrl. debounce, esc chowa.</p></div>
-    <div><b>prawdziwy start</b><p>minecraft-launcher-core pobiera pliki i odpala javę. progress na żywo.</p></div>
-    <div><b>wiele wersji</b><p id="vers-line">1.8.9 → 1.21.1, lista z backendu, nie hardcode.</p></div>
-    <div><b>themes</b><p>3 motywy w settings (dół-prawo). zero fioletu.</p></div>
-  </section>
+    <div class="box">
+      <div class="box-head">cheats?</div>
+      <div class="seg">
+        <button class="active"><i></i>Nah not today</button>
+        <button><i></i>Obviously Yes</button>
+      </div>
+    </div>
 
-  <section id="vers">
-    <h2>versions</h2>
+    <a class="play" id="dl-top" href="#pobierz"><img src="https://mc-heads.net/avatar/Polonium/38" alt=""><span><b>POBIERZ</b><small id="play-sub">vanilla • 1.21</small></span></a>
+
+    <div class="vers-label">wersje</div>
     <div id="vlist"></div>
   </section>
 
-  <section id="dl">
-    <h2>download</h2>
-    <p>windows • electron. wymaga javy 17+ (1.8.9 → java 8).</p>
+  <section id="cheaty" class="grid">
+    <div><b>menu na rctrl</b><p>clickgui w grze: combat, movement, render, hud. f8 / insert jako zapas.</p></div>
+    <div><b>cheaty</b><p>killaura, aim assist, reach, velocity, autoclicker, esp. odpalasz jednym klikiem nad play.</p></div>
+    <div><b>wersje</b><p id="vers-line">od 1.8.9 po 1.21.1. wybierasz pod przyciskiem.</p></div>
+    <div><b>motywy</b><p>polonium, midnight, ghost. ustawienia w prawym dolnym rogu.</p></div>
+  </section>
+
+  <section id="wersje">
+    <h2>wersje</h2>
+    <div id="vlist2"></div>
+  </section>
+
+  <section id="pobierz">
+    <h2>pobierz</h2>
+    <p>windows. java 17+ (1.8.9 → java 8).</p>
     <div class="row">
-      <a class="btn" href="https://github.com/poloniumclient/poloniumclient.github.io/releases">releases</a>
-      <a class="btn ghost" href="https://github.com/poloniumclient/poloniumclient.github.io">source</a>
+      <a class="btn" href="https://github.com/poloniumclient/poloniumclient.github.io/releases">pobierz <span id="latest">v0.1.0</span></a>
     </div>
-    <pre>git clone https://github.com/poloniumclient/poloniumclient.github.io.git
-cd poloniumclient.github.io
-npm i
-npm start</pre>
   </section>
 </main>
 

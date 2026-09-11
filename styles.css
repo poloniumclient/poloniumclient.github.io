@@ -1,29 +1,52 @@
 *{box-sizing:border-box}
-:root{--bg:#0c0c0e;--panel:#131316;--line:#232328;--txt:#d7d7db;--dim:#7a7a82;--acc:#caff3d}
-body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.6 "Segoe UI",system-ui,sans-serif;max-width:860px;margin:0 auto;padding:0 20px}
-.top{display:flex;justify-content:space-between;align-items:center;height:52px;border-bottom:1px solid var(--line);color:var(--acc)}
+:root{--bg:#0c0c0e;--panel:#131316;--line:#232328;--txt:#d7d7db;--dim:#7a7a82;--acc:#caff3d;--acc-dim:#2a3312}
+html,body{margin:0}
+body{background:var(--bg);color:var(--txt);font:14px/1.6 "Segoe UI",system-ui,sans-serif;overflow-x:hidden}
+#bg{position:fixed;inset:0;pointer-events:none;z-index:0}
+#bg .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:36px 36px;opacity:.35;mask-image:radial-gradient(700px 480px at 50% 30%,#000 30%,transparent 75%)}
+#bg .glow{position:absolute;left:50%;top:26%;width:560px;height:300px;transform:translate(-50%,-50%);background:var(--acc);opacity:.07;filter:blur(90px)}
+#bg .watermark{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);font:900 92px "Consolas",monospace;letter-spacing:8px;color:transparent;-webkit-text-stroke:1px var(--line);opacity:.5;user-select:none}
+#bg .cubes i{position:absolute;width:10px;height:10px;background:var(--acc);opacity:.25;animation:float 7s linear infinite}
+#bg .cubes i:nth-child(1){left:18%;top:70%}
+#bg .cubes i:nth-child(2){left:78%;top:24%;animation-delay:-2s;opacity:.15}
+#bg .cubes i:nth-child(3){left:68%;top:72%;animation-delay:-4s;width:7px;height:7px}
+#bg .cubes i:nth-child(4){left:28%;top:26%;animation-delay:-1s;width:6px;height:6px;opacity:.18}
+#bg .cubes i:nth-child(5){left:12%;top:38%;animation-delay:-5s;width:14px;height:14px;opacity:.1}
+#bg .cubes i:nth-child(6){left:86%;top:62%;animation-delay:-3s;width:8px;height:8px}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-16px)}100%{transform:translateY(0)}}
+#dvd{position:absolute;left:0;top:0;color:var(--acc);opacity:.5;will-change:transform}
+.top,.hero,.grid,#wersje,#pobierz,footer{position:relative;z-index:1}
+.top{display:flex;justify-content:space-between;align-items:center;height:48px;max-width:860px;margin:0 auto;padding:0 20px;border-bottom:1px solid var(--line);color:var(--acc)}
 .top nav{display:flex;gap:16px}
 .top a{color:var(--dim);text-decoration:none;font:12px "Consolas",monospace}
 .top a:hover{color:var(--txt)}
-.hero{padding:64px 0 32px}
+main{max-width:860px;margin:0 auto;padding:0 20px}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:56px 0 24px}
 .kicker{font:11px "Consolas",monospace;color:var(--dim);letter-spacing:1px}
 h1{font-size:64px;margin:8px 0;letter-spacing:-2px}
-.hero p{color:var(--dim)}
-.row{display:flex;gap:12px;align-items:center;margin-top:16px}
-.btn{background:var(--acc);color:#000;text-decoration:none;padding:10px 28px;font-weight:800;border-bottom:3px solid #00000055}
-.btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
-.ver{font:12px "Consolas",monospace;color:var(--dim)}
-.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:28px}
-.shot{background:var(--panel);border:1px solid var(--line);padding:14px}
-.shot b{display:block;font-size:13px}
-.shot span{font-size:12px;color:var(--dim)}
+.hero>p{color:var(--dim);margin:0 0 8px}
+.box{width:300px;background:var(--panel);border:1px solid var(--line);margin-top:12px;text-align:left}
+.box-head{font:600 10px "Consolas",monospace;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);padding:8px 12px;border-bottom:1px solid var(--line)}
+.seg{display:flex;flex-direction:column}
+.seg button{display:flex;align-items:center;gap:10px;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--txt);padding:10px 12px;font-size:13px;text-align:left;cursor:default}
+.seg button:last-child{border-bottom:0}
+.seg button i{width:11px;height:11px;border:1px solid var(--dim);flex:none}
+.seg button.active i{background:var(--acc);border-color:var(--acc)}
+.play{width:300px;background:var(--acc);border:0;border-bottom:3px solid #00000055;color:#0a0a0a;padding:10px 14px;display:flex;align-items:center;gap:12px;text-decoration:none;margin-top:12px;text-align:left}
+.play img{width:38px;height:38px;image-rendering:pixelated;background:#00000033;flex:none}
+.play b{display:block;font-size:19px;letter-spacing:5px;line-height:1}
+.play small{display:block;font:11px "Consolas",monospace;opacity:.65;margin-top:3px}
+.vers-label{font:600 10px "Consolas",monospace;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);margin-top:14px}
+#vlist,#vlist2{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:480px;margin-top:8px}
+#vlist span,#vlist2 span{border:1px solid var(--line);padding:5px 12px;font:12px "Consolas",monospace;color:var(--dim)}
+#vlist span:first-child,#vlist2 span:first-child{border-color:var(--acc);color:var(--acc)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:32px 0}
 .grid>div{background:var(--panel);border:1px solid var(--line);padding:14px}
 .grid b{font-size:13px}
 .grid p{font-size:13px;color:var(--dim);margin:6px 0 0}
-#vers h2,#dl h2{font:11px "Consolas",monospace;text-transform:uppercase;letter-spacing:2px;color:var(--dim)}
-#vlist{display:flex;gap:6px;flex-wrap:wrap}
-#vlist span{border:1px solid var(--line);padding:5px 12px;font:12px "Consolas",monospace;color:var(--dim)}
-#vlist span:first-child{border-color:var(--acc);color:var(--acc)}
-pre{background:#08080a;border:1px solid var(--line);padding:12px;font:12px "Consolas",monospace;color:var(--dim);overflow:auto}
-footer{border-top:1px solid var(--line);padding:16px 0 32px;margin-top:32px;font:12px "Consolas",monospace;color:var(--dim)}
+#wersje h2,#pobierz h2{font:11px "Consolas",monospace;text-transform:uppercase;letter-spacing:2px;color:var(--dim)}
+.row{display:flex;gap:12px;align-items:center;margin-top:12px}
+.btn{background:var(--acc);color:#000;text-decoration:none;padding:10px 28px;font-weight:800;border-bottom:3px solid #00000055}
+.btn span{font:12px "Consolas",monospace}
+#pobierz p{color:var(--dim)}
+footer{border-top:1px solid var(--line);padding:16px 0 32px;margin:32px auto 0;max-width:860px;font:12px "Consolas",monospace;color:var(--dim);padding-left:20px;padding-right:20px}
