@@ -6,40 +6,55 @@
 <title>polonium — launcher z cheatami do minecrafta</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="bg"><div class="grid"></div><div class="glow"></div><div class="cubes"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="watermark">POLONIUM</div><div id="dvd"><svg width="120" height="34" viewBox="0 0 120 34"><rect x="1" y="1" width="118" height="32" fill="none" stroke="currentColor" stroke-width="2"/><text x="60" y="22" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="700" font-size="14" letter-spacing="3" fill="currentColor">POLONIUM</text></svg></div></div>
+<div id="bg"><div class="grid"></div><div class="glow g1"></div><div class="glow g2"></div><div class="noise"></div><div class="cubes"><i></i><i></i><i></i><i></i><i></i><i></i></div><div id="dvd"><svg width="120" height="34" viewBox="0 0 120 34"><rect x="1" y="1" width="118" height="32" fill="none" stroke="currentColor" stroke-width="2"/><text x="60" y="22" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="700" font-size="14" letter-spacing="3" fill="currentColor">POLONIUM</text></svg></div></div>
 
 <header class="top">
-  <div class="logo"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 18V6h5a4 4 0 0 1 0 8H8" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>polonium</span></div>
+  <div class="logo"><svg width="26" height="26" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 18V6h5a4 4 0 0 1 0 8H8" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>polonium</span></div>
   <nav><a href="#cheaty">cheaty</a><a href="#mody">mody</a><a href="#wersje">wersje</a><a href="#faq">faq</a></nav>
   <a class="nav-cta" href="#pobierz">pobierz</a>
 </header>
 
 <main>
   <section class="hero reveal">
-    <div class="kicker"><span class="pulse"></span>launcher z cheatami do minecrafta • <span id="online">12 400</span> graczy online</div>
+    <div class="kicker"><span class="pulse"></span>launcher z cheatami do minecrafta<span class="sep">/</span><span id="online">12 400</span>&nbsp;graczy online</div>
     <h1>rozpierdol<br><em>każdą potyczkę</em></h1>
-    <p>play na środku. wersje pod spodem. menu na prawy ctrl.<br>killaura, reach, velocity — odpalasz jednym klikiem.</p>
+    <p class="lede">play na środku. wersje pod spodem. menu na prawy ctrl.<br>killaura, reach, velocity — odpalasz jednym klikiem.</p>
 
-    <div class="box">
-      <div class="box-head">cheats?</div>
-      <div class="seg">
-        <button class="active"><i></i>Nah not today</button>
-        <button><i></i>Obviously Yes</button>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="box">
+          <div class="box-head">cheats?</div>
+          <div class="seg">
+            <button class="active"><i></i>Nah not today</button>
+            <button><i></i>Obviously Yes</button>
+          </div>
+        </div>
+        <a class="play" href="#pobierz"><img src="https://mc-heads.net/avatar/Polonium/38" alt=""><span><b>POBIERZ</b><small id="play-sub">vanilla • 1.21</small></span></a>
+        <div class="osrow">
+          <button class="os active">windows</button><button class="os">macos</button><button class="os">linux</button>
+        </div>
+        <div class="vers-label">wersje</div>
+        <div id="vlist"></div>
+      </div>
+
+      <div class="winwrap">
+        <div class="win" id="tilt">
+          <div class="winbar"><i></i><i></i><i></i><span>polonium — clickgui</span><b>rctrl</b></div>
+          <div class="winbody">
+            <div class="wrow on"><i></i><div><b>killaura</b><small>combat • 3.2b • 12cps</small></div><em>on</em></div>
+            <div class="wrow on"><i></i><div><b>velocity</b><small>combat • 90 / 100</small></div><em>on</em></div>
+            <div class="wrow"><i></i><div><b>fly</b><small>movement • off</small></div><em>off</em></div>
+            <div class="wrow on"><i></i><div><b>esp</b><small>render • box</small></div><em>on</em></div>
+            <div class="wfoot"><span>fps: 240</span><span>cps: 12 | 13</span><span class="acc">20 modułów</span></div>
+          </div>
+        </div>
+        <div class="winshadow"></div>
       </div>
     </div>
-
-    <a class="play" href="#pobierz"><img src="https://mc-heads.net/avatar/Polonium/38" alt=""><span><b>POBIERZ</b><small id="play-sub">vanilla • 1.21</small></span></a>
-
-    <div class="osrow">
-      <button class="os active">windows</button><button class="os">macos</button><button class="os">linux</button>
-    </div>
-
-    <div class="vers-label">wersje</div>
-    <div id="vlist"></div>
   </section>
 
   <div class="marquee"><div class="track"><span>killaura • reach • velocity • aim assist • autoclicker • esp • scaffold • nofall • fly •&nbsp;</span><span>killaura • reach • velocity • aim assist • autoclicker • esp • scaffold • nofall • fly •&nbsp;</span></div></div>
@@ -52,17 +67,20 @@
   </section>
 
   <section id="cheaty" class="feat reveal">
-    <h2>cheaty</h2>
+    <div class="kick">01 — cheaty</div>
+    <h2>arsenał, nie tapeta</h2>
+    <p class="sub">cztery rzeczy które robią robotę. reszta w clickgui.</p>
     <div class="cards">
-      <div><b>killaura</b><p>auto-atak z trybem ghost. range, cps, cele.</p></div>
-      <div><b>reach + velocity</b><p>większy zasięg i mniejszy odrzut. combo robi się samo.</p></div>
-      <div><b>menu na rctrl</b><p>clickgui w grze: combat, movement, render, hud. zapas: f8 / insert.</p></div>
-      <div><b>esp + fullbright</b><p>boxy przez ściany i jasność. widzisz wszystko.</p></div>
+      <div><span class="ico">◎</span><b>killaura</b><p>auto-atak z trybem ghost. range, cps, cele.</p></div>
+      <div><span class="ico">↗</span><b>reach + velocity</b><p>większy zasięg i mniejszy odrzut. combo robi się samo.</p></div>
+      <div><span class="ico">▦</span><b>menu na rctrl</b><p>clickgui w grze: combat, movement, render, hud. zapas: f8 / insert.</p></div>
+      <div><span class="ico">◐</span><b>esp + fullbright</b><p>boxy przez ściany i jasność. widzisz wszystko.</p></div>
     </div>
   </section>
 
   <section id="mody" class="reveal">
-    <h2>mody</h2>
+    <div class="kick">02 — mody</div>
+    <h2>20 modułów</h2>
     <div class="filter">
       <button data-cat="all" class="active">wszystkie</button>
       <button data-cat="combat">combat</button>
@@ -73,7 +91,8 @@
   </section>
 
   <section class="shots reveal">
-    <h2>w środku</h2>
+    <div class="kick">03 — w środku</div>
+    <h2>tak to wygląda</h2>
     <div class="cards3">
       <div class="shot"><div class="mock"><div class="mrow"><i class="on"></i><span>killaura — on</span></div><div class="mrow"><i></i><span>fly — off</span></div><div class="mrow"><i class="on"></i><span>esp — on</span></div></div><b>clickgui</b><span>prawy ctrl w grze</span></div>
       <div class="shot"><div class="mock hud"><span>fps: 240</span><span>cps: 12 | 13</span><span>W A S D</span></div><b>hud</b><span>fps, cps, keystrokes</span></div>
@@ -82,23 +101,26 @@
   </section>
 
   <section id="wersje" class="reveal">
-    <h2>wersje</h2>
+    <div class="kick">04 — wersje</div>
+    <h2>od 1.8.9 do 1.21.1</h2>
     <div id="vlist2"></div>
-    <p class="dim">od 1.8.9 pvp po 1.21.1. wybierasz pod przyciskiem w launcherze.</p>
+    <p class="dim">pvp na 1.8.9, reszta na nowych. wybierasz pod przyciskiem w launcherze.</p>
   </section>
 
   <section id="pobierz" class="dl reveal">
-    <h2>pobierz</h2>
+    <div class="kick">05 — pobierz</div>
+    <h2>gotowy w 60 sekund</h2>
     <p>windows. java 17+ (1.8.9 → java 8).</p>
     <div class="row">
       <a class="btn big" href="https://github.com/poloniumclient/poloniumclient.github.io/releases">pobierz <span id="latest">v0.1.0</span></a>
       <button class="btn ghost" id="copy-ip">kopiuj ip serwera</button>
     </div>
-    <ol class="steps"><li>pobierz i zainstaluj</li><li>wpisz nick i wybierz wersję</li><li>kliknij play i w grze wciśnij prawy ctrl</li></ol>
+    <ol class="steps"><li><b>01</b>pobierz i zainstaluj</li><li><b>02</b>wpisz nick i wybierz wersję</li><li><b>03</b>kliknij play, w grze wciśnij prawy ctrl</li></ol>
   </section>
 
   <section id="faq" class="reveal">
-    <h2>faq</h2>
+    <div class="kick">06 — faq</div>
+    <h2>pytania</h2>
     <div class="qa"><button>czy dostanę bana?<i>+</i></button><p>cheaty na serwerach zawsze niosą ryzyko. graj na własne ryzyko, najlepiej na altach.</p></div>
     <div class="qa"><button>jak otworzyć menu w grze?<i>+</i></button><p>prawy ctrl. zapasowo f8 albo insert.</p></div>
     <div class="qa"><button>jaka java?<i>+</i></button><p>java 17+ do nowych wersji, java 8 do 1.8.9. launcher sam sprawdza przed startem.</p></div>
@@ -106,7 +128,7 @@
   </section>
 </main>
 
-<footer>polonium • <span id="year"></span> • <a href="https://github.com/poloniumclient/poloniumclient.github.io">github</a></footer>
+<footer><b>polonium</b><span>launcher z cheatami do minecrafta</span><span id="year"></span><a href="https://github.com/poloniumclient/poloniumclient.github.io">github →</a></footer>
 <script src="app.js"></script>
 </body>
 </html>
