@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>polonium — launcher z cheatami do minecrafta</title>
+<meta name="description" content="Polonium — launcher z cheatami do Minecrafta. 28 modułów: killaura, reach, velocity, autocrystal, scaffold, mlg, esp. Menu na prawy ctrl.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,16 +14,23 @@
 <div id="bg"><div class="grid"></div><div class="glow g1"></div><div class="glow g2"></div><div class="noise"></div><div class="cubes"><i></i><i></i><i></i><i></i><i></i><i></i></div><div id="dvd"><svg width="120" height="34" viewBox="0 0 120 34"><rect x="1" y="1" width="118" height="32" fill="none" stroke="currentColor" stroke-width="2"/><text x="60" y="22" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="700" font-size="14" letter-spacing="3" fill="currentColor">POLONIUM</text></svg></div></div>
 
 <header class="top">
-  <div class="logo"><svg width="26" height="26" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 18V6h5a4 4 0 0 1 0 8H8" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>polonium</span></div>
+  <div class="logo"><svg width="26" height="26" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 18V6h5a4 4 0 0 1 0 8H8" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>polonium</span><em class="ver" id="latest-top">v0.1.0</em></div>
   <nav><a href="#cheaty">cheaty</a><a href="#mody">mody</a><a href="#wersje">wersje</a><a href="#faq">faq</a></nav>
   <a class="nav-cta" href="#pobierz">pobierz</a>
 </header>
 
 <main>
   <section class="hero reveal">
-    <div class="kicker"><span class="pulse"></span>launcher z cheatami do minecrafta</div>
+    <div class="kicker"><span class="pulse"></span>launcher z cheatami do minecrafta<span class="grim">Grim Tested ✅</span></div>
     <h1>rozpierdol<br><em>każdą potyczkę</em></h1>
-    <p class="lede">play na środku. wersje pod spodem. menu na prawy ctrl.<br>killaura, reach, velocity — odpalasz jednym klikiem.</p>
+    <p class="lede">28 modułów ghost. menu na prawy ctrl, odpalasz jednym klikiem.<br>killaura, autocrystal, reach, velocity, scaffold, mlg.</p>
+
+    <div class="hero-badges">
+      <span><b>28</b> modułów</span>
+      <span><b>10</b> combat</span>
+      <span><b>8</b> movement</span>
+      <span>mod na <b>1.21</b></span>
+    </div>
 
     <div class="hero-grid">
       <div class="hero-left">
@@ -37,19 +45,21 @@
         <div class="osrow">
           <button class="os active">windows</button><button class="os">macos</button><button class="os">linux</button>
         </div>
-        <div class="vers-label">wersje</div>
+        <div class="vers-label">wersje <span class="mini">74 wydania • 1.8 → 26.2</span></div>
         <div id="vlist"></div>
       </div>
 
       <div class="winwrap">
         <div class="win" id="tilt">
           <div class="winbar"><i></i><i></i><i></i><span>polonium — clickgui</span><b>rctrl</b></div>
+          <div class="wincats"><span class="on">combat 10</span><span>movement 8</span><span>player 2</span><span>render 2</span><span>hud 5</span></div>
           <div class="winbody">
-            <div class="wrow on"><i></i><div><b>killaura</b><small>combat • 3.2b • 12cps</small></div><em>on</em></div>
+            <div class="wrow on"><i></i><div><b>killaura</b><small>combat • ghost • 1.8/1.9</small></div><em>on</em></div>
+            <div class="wrow on"><i></i><div><b>autocrystal</b><small>combat • place + break</small></div><em>on</em></div>
             <div class="wrow on"><i></i><div><b>velocity</b><small>combat • 90 / 100</small></div><em>on</em></div>
             <div class="wrow"><i></i><div><b>speedglitch</b><small>glitches • off</small></div><em>off</em></div>
             <div class="wrow on"><i></i><div><b>esp</b><small>render • box</small></div><em>on</em></div>
-            <div class="wfoot"><span>fps: 240</span><span>cps: 12 | 13</span><span class="acc">30 modułów</span></div>
+            <div class="wfoot"><span>fps: 240</span><span>cps: 12 | 13</span><span class="acc">28 modułów</span></div>
           </div>
         </div>
         <div class="winshadow"></div>
@@ -57,11 +67,11 @@
     </div>
   </section>
 
-  <div class="marquee"><div class="track"><span>killaura • reach • velocity • aim assist • autoclicker • esp • scaffold • nofall • speedglitch •&nbsp;</span><span>killaura • reach • velocity • aim assist • autoclicker • esp • scaffold • nofall • speedglitch •&nbsp;</span></div></div>
+  <div class="marquee"><div class="track"><span>killaura • autocrystal • reach • velocity • speedglitch • mlg • scaffold • elytrafly • esp • pearlclutch •&nbsp;</span><span>killaura • autocrystal • reach • velocity • speedglitch • mlg • scaffold • elytrafly • esp • pearlclutch •&nbsp;</span></div></div>
 
   <section class="stats reveal">
     <div class="live-cell"><b id="live-big">—</b><small><span class="pulse sm"></span>teraz online</small></div>
-    <div><b data-count="30">0</b><small>modułów</small></div>
+    <div><b data-count="28">0</b><small>modułów</small></div>
     <div><b data-count="74">0</b><small>wersji mc</small></div>
     <div><b data-count="3">0</b><small>motywy</small></div>
   </section>
@@ -71,12 +81,12 @@
   <section id="cheaty" class="feat reveal">
     <div class="kick">01 — cheaty</div>
     <h2>arsenał, nie tapeta</h2>
-    <p class="sub">cztery rzeczy które robią robotę. reszta w clickgui. <span class="acc">Grim Tested ✅</span></p>
+    <p class="sub">10 modułów combat, 8 movement, reszta w clickgui. <span class="acc">Grim Tested ✅</span></p>
     <div class="cards">
-      <div><span class="ico">◎</span><b>killaura</b><p>auto-atak z trybem ghost. range, cps, pvp 1.8 / 1.9.</p></div>
-      <div><span class="ico">↗</span><b>reach + velocity</b><p>większy zasięg i mniejszy odrzut. combo robi się samo.</p></div>
-      <div><span class="ico">▦</span><b>menu na rctrl</b><p>natywne clickgui w grze: combat, movement, glitches, hud. zapas: f8 / insert.</p></div>
-      <div><span class="ico">◐</span><b>esp + fullbright</b><p>boxy graczy i mobów przez ściany. widzisz wszystko.</p></div>
+      <div class="feat-card"><span class="ico">◎</span><b>killaura + autocrystal</b><p>auto-atak ghost (pvp 1.8 / 1.9) i kryształy z place + break, range i min-damage.</p><span class="tag">combat</span></div>
+      <div class="feat-card"><span class="ico">↗</span><b>reach + velocity</b><p>większy zasięg, mniejszy odrzut, w-tap i keepsprint. combo robi się samo.</p><span class="tag">combat</span></div>
+      <div class="feat-card"><span class="ico">▦</span><b>menu na rctrl</b><p>natywne clickgui w grze: combat, movement, player, render, hud, glitches. zapas: f8 / insert.</p><span class="tag">launcher</span></div>
+      <div class="feat-card"><span class="ico">◐</span><b>esp + fullbright</b><p>boxy graczy i mobów przez ściany, pełna jasność i konfigurowalny hud.</p><span class="tag">render + hud</span></div>
     </div>
   </section>
 
@@ -84,13 +94,16 @@
 
   <section id="mody" class="reveal">
     <div class="kick">02 — mody</div>
-    <h2>30 modułów</h2>
+    <h2>28 modułów</h2>
+    <p class="sub">combat 10 • movement 8 • player 2 • render 2 • hud 5 • glitches 1</p>
     <div class="filter">
       <button data-cat="all" class="active">wszystkie</button>
       <button data-cat="combat">combat</button>
       <button data-cat="movement">movement</button>
-      <button data-cat="glitches">glitches</button>
+      <button data-cat="player">player</button>
+      <button data-cat="render">render</button>
       <button data-cat="hud">hud</button>
+      <button data-cat="glitches">glitches</button>
     </div>
     <div class="cards" id="modgrid"></div>
   </section>
@@ -101,8 +114,8 @@
     <div class="kick">03 — w środku</div>
     <h2>tak to wygląda</h2>
     <div class="cards3">
-      <div class="shot"><div class="mock"><div class="mrow"><i class="on"></i><span>killaura — on</span></div><div class="mrow"><i></i><span>speed — off</span></div><div class="mrow"><i class="on"></i><span>esp — on</span></div></div><b>clickgui</b><span>prawy ctrl w grze</span></div>
-      <div class="shot"><div class="mock hud"><span>fps: 240</span><span>cps: 12 | 13</span><span>W A S D</span></div><b>hud</b><span>fps, cps, keystrokes</span></div>
+      <div class="shot"><div class="mock"><div class="mrow"><i class="on"></i><span>killaura — on</span></div><div class="mrow"><i class="on"></i><span>autocrystal — on</span></div><div class="mrow"><i></i><span>speed — off</span></div><div class="mrow"><i class="on"></i><span>esp — on</span></div></div><b>clickgui</b><span>prawy ctrl w grze</span></div>
+      <div class="shot"><div class="mock hud"><span>fps: 240</span><span>cps: 12 | 13</span><span>W A S D</span><span>arraylist</span></div><b>hud</b><span>fps, cps, keystrokes, armor</span></div>
       <div class="shot"><div class="mock theme"><i class="t1"></i><i class="t2"></i><i class="t3"></i></div><b>motywy</b><span>polonium • midnight • ghost</span></div>
     </div>
   </section>
@@ -113,7 +126,7 @@
     <div class="kick">04 — wersje</div>
     <h2>od 1.8 do 26.2</h2>
     <div id="vlist2"></div>
-    <p class="dim">wszystkie 74 wersje, od 1.8 pvp po 26.2. wybierasz pod przyciskiem w launcherze.</p>
+    <p class="dim">wszystkie 74 wersje, od 1.8 pvp po 26.2. mod z cheatami siedzi na 1.21.</p>
   </section>
 
   <div class="sep" aria-hidden="true"><i></i></div>
@@ -121,9 +134,17 @@
   <section id="pobierz" class="dl reveal">
     <div class="kick">05 — pobierz</div>
     <h2>gotowy w 60 sekund</h2>
-    <p>windows. java dociąga się sama (8 / 17 / 21). mod z cheatami siedzi na 1.21.</p>
-    <div class="row">
-      <a class="btn big" href="https://github.com/poloniumclient/polonium/releases/latest">pobierz <span id="latest">v0.1.0</span></a>
+    <p class="sub">windows. java dociąga się sama (8 / 17 / 21). mod z cheatami siedzi na 1.21.</p>
+    <div class="dl-grid">
+      <div class="dl-main">
+        <a class="btn big" href="https://github.com/poloniumclient/polonium/releases/latest">pobierz <span id="latest">v0.1.0</span></a>
+        <div class="dl-meta"><span>launcher • windows / macos / linux</span><span class="grim">Grim Tested ✅</span></div>
+      </div>
+      <ol class="steps">
+        <li><b>01</b>pobierz z releases</li>
+        <li><b>02</b>wybierz 1.21 i włącz mod</li>
+        <li><b>03</b>w grze wciśnij prawy ctrl</li>
+      </ol>
     </div>
   </section>
 
@@ -132,18 +153,26 @@
   <section id="faq" class="reveal">
     <div class="kick">06 — faq</div>
     <h2>pytania</h2>
-    <div class="qa"><button>czy dostanę bana?<i>+</i></button><p>cheaty zawsze niosą ryzyko. mod jest testowany na GrimAC (Grim Tested ✅), ale 100% niewykrywalności nie istnieje — graj na altach.</p></div>
-    <div class="qa"><button>jak otworzyć menu w grze?<i>+</i></button><p>prawy ctrl — natywne menu, działa nawet na exclusive fullscreen. zapasowo f8 albo insert (overlay z launchera).</p></div>
-    <div class="qa"><button>jaka java?<i>+</i></button><p>żadna. launcher sam dociąga javę 8 / 17 / 21 pod wybraną wersję.</p></div>
-    <div class="qa"><button>na jakich wersjach działa mod?<i>+</i></button><p>launcher odpala 1.8 → 26.2, ale mod z cheatami realnie siedzi na 1.21.</p></div>
-    <div class="qa"><button>jak ustawić bindy?<i>+</i></button><p>rozwiń moduł (kółko myszy), kliknij wiersz bind i wciśnij klawisz. backspace czyści, esc anuluje.</p></div>
-    <div class="qa"><button>jak przesunąć hud?<i>+</i></button><p>rctrl → zębatka → hud edit: ON. wracasz do gry i ciągniesz ramki myszką jak w lunarze.</p></div>
-    <div class="qa"><button>mlg nie kładzie wody?<i>+</i></button><p>włącz AutoMLG, miej wiadro wody w hotbarze (slot 1–9) i skacz z 6+ kratek. nie testuj na spawnie z protectem ani w netherze.</p></div>
-    <div class="qa"><button>ile to kosztuje?<i>+</i></button><p>nic. pobierasz z releases i grasz.</p></div>
+    <div class="faq-grid">
+      <div class="qa"><button>czy dostanę bana?<i>+</i></button><p>cheaty zawsze niosą ryzyko. mod jest testowany na GrimAC (Grim Tested ✅), ale 100% niewykrywalności nie istnieje — graj na altach.</p></div>
+      <div class="qa"><button>jak otworzyć menu w grze?<i>+</i></button><p>prawy ctrl — natywne menu, działa nawet na exclusive fullscreen. zapasowo f8 albo insert (overlay z launchera).</p></div>
+      <div class="qa"><button>jaka java?<i>+</i></button><p>żadna. launcher sam dociąga javę 8 / 17 / 21 pod wybraną wersję.</p></div>
+      <div class="qa"><button>na jakich wersjach działa mod?<i>+</i></button><p>launcher odpala 1.8 → 26.2, ale mod z cheatami realnie siedzi na 1.21.</p></div>
+      <div class="qa"><button>jak ustawić bindy?<i>+</i></button><p>rozwiń moduł (kółko myszy), kliknij wiersz bind i wciśnij klawisz. backspace czyści, esc anuluje.</p></div>
+      <div class="qa"><button>jak przesunąć hud?<i>+</i></button><p>rctrl → zębatka → hud edit: ON. wracasz do gry i ciągniesz ramki myszką jak w lunarze.</p></div>
+      <div class="qa"><button>mlg nie kładzie wody?<i>+</i></button><p>włącz mlg, miej wiadro wody w hotbarze (slot 1–9) i skacz z 6+ kratek. nie testuj na spawnie z protectem ani w netherze.</p></div>
+      <div class="qa"><button>jak działają moduły crystal?<i>+</i></button><p>autocrystal stawia i zbija kryształy automatycznie. ustaw range oraz min-damage, żeby nie bić siebie. działa na 1.21.</p></div>
+      <div class="qa"><button>jak latać na elytrze?<i>+</i></button><p>włącz elytrafly, załóż elytrę i miej fajerwerki w ekwipunku. mod dopala lot rakietami i trzyma wysokość.</p></div>
+      <div class="qa"><button>ile to kosztuje?<i>+</i></button><p>nic. pobierasz z releases i grasz.</p></div>
+    </div>
   </section>
 </main>
 
-<footer><b>polonium</b><span>launcher z cheatami do minecrafta</span><span id="year"></span><a href="https://github.com/poloniumclient/poloniumclient.github.io">github →</a></footer>
+<footer>
+  <div class="foot-main"><b>polonium</b><span>launcher z cheatami do minecrafta • 28 modułów • Grim Tested ✅</span></div>
+  <div class="foot-links"><a href="#cheaty">cheaty</a><a href="#mody">mody</a><a href="#wersje">wersje</a><a href="#faq">faq</a></div>
+  <div class="foot-side"><span id="year"></span><a href="https://github.com/poloniumclient/poloniumclient.github.io">github →</a></div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app.js"></script>
 </body>

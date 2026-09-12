@@ -1,36 +1,38 @@
 const MODS = [
-  { n: 'killaura', c: 'combat', d: 'auto-atak, tryb ghost' },
-  { n: 'aim assist', c: 'combat', d: 'delikatna pomoc celowania' },
-  { n: 'reach', c: 'combat', d: 'większy zasięg' },
-  { n: 'velocity', c: 'combat', d: 'mniejszy odrzut' },
-  { n: 'autoclicker', c: 'combat', d: 'klikanie z randomizacją' },
-  { n: 'antibot', c: 'combat', d: 'filtruje boty' },
-  { n: 'w-tap', c: 'combat', d: 'reset sprintu do combo' },
+  // combat (10)
+  { n: 'killaura', c: 'combat', d: 'auto-atak ghost, pvp 1.8 / 1.9' },
+  { n: 'reach', c: 'combat', d: 'większy zasięg ataku' },
+  { n: 'velocity', c: 'combat', d: 'mniejszy odrzut po hitach' },
+  { n: 'antibot', c: 'combat', d: 'filtruje boty na serwerach' },
+  { n: 'w-tap', c: 'combat', d: 'reset sprintu pod combo' },
   { n: 'keepsprint', c: 'combat', d: 'sprint nie spada po hicie' },
-  { n: 'autoarmor', c: 'combat', d: 'zakłada lepszą zbroję' },
-  { n: 'autoweapon', c: 'combat', d: 'miecz i tool pod celownik' },
+  { n: 'autoweapon', c: 'combat', d: 'broń i tool pod celownik' },
+  { n: 'autototem', c: 'combat', d: 'totem automatycznie do offhanda' },
+  { n: 'autopot', c: 'combat', d: 'auto splash-heal w walce' },
+  { n: 'autocrystal', c: 'combat', d: 'kryształy: place i break, range i min-dmg' },
+  // player (2)
+  { n: 'autoarmor', c: 'player', d: 'zakłada najlepszą zbroję' },
+  { n: 'autogg', c: 'player', d: 'wysyła gg po killu' },
+  // movement (8)
   { n: 'sprint', c: 'movement', d: 'stały sprint' },
-  { n: 'speed', c: 'movement', d: 'legit autohop + sprint' },
-  { n: 'safewalk', c: 'movement', d: 'auto-shift na krawędzi' },
-  { n: 'scaffold', c: 'movement', d: 'auto-stawianie bloków' },
-  { n: 'nofall', c: 'movement', d: 'brak fall damage' },
-  { n: 'mlg', c: 'movement', d: 'auto-woda i pajęczyna' },
-  { n: 'elytraboost', c: 'movement', d: 'rocket boost w locie' },
-  { n: 'antivoid', c: 'movement', d: 'wyjście przed voidem' },
-  { n: 'speedglitch', c: 'glitches', d: 'snap raz na skok' },
-  { n: 'jumpglitch', c: 'movement', d: 'skok 1.5 kratki' },
-  { n: 'pearlclutch', c: 'movement', d: 'perła ratunkowa' },
-  { n: 'esp', c: 'hud', d: 'boxy graczy i mobów' },
-  { n: 'fullbright', c: 'hud', d: 'jasność' },
-  { n: 'zoom', c: 'hud', d: 'optyka' },
-  { n: 'fps hud', c: 'hud', d: 'licznik fps' },
-  { n: 'cps hud', c: 'hud', d: 'licznik kliknięć' },
-  { n: 'keystrokes', c: 'hud', d: 'podgląd klawiszy' },
-  { n: 'armor hud', c: 'hud', d: 'stan zbroi' },
-  { n: 'arraylist', c: 'hud', d: 'lista modułów' },
-  { n: 'antivoid', c: 'movement', d: 'wyjście przed voidem' },
-  { n: 'autoweapon', c: 'combat', d: 'miecz i tool pod celownik' },
-  { n: 'autogg', c: 'combat', d: 'gg po killu' }
+  { n: 'speed', c: 'movement', d: 'szybkie poruszanie z autohopem' },
+  { n: 'safewalk', c: 'movement', d: 'auto-shift na krawędzi bloku' },
+  { n: 'nofall', c: 'movement', d: 'blokuje obrażenia z upadku' },
+  { n: 'mlg', c: 'movement', d: 'auto-woda przy upadku z wysokości' },
+  { n: 'pearlclutch', c: 'movement', d: 'auto-perła ratunkowa przy upadku' },
+  { n: 'elytrafly', c: 'movement', d: 'lot na elytrze z dopalaniem rakietami' },
+  { n: 'scaffold', c: 'movement', d: 'auto-stawianie bloków pod nogi' },
+  // render (2)
+  { n: 'esp', c: 'render', d: 'boxy graczy i mobów przez ściany' },
+  { n: 'fullbright', c: 'render', d: 'pełna jasność w ciemności' },
+  // hud (5)
+  { n: 'fps-hud', c: 'hud', d: 'licznik fps na ekranie' },
+  { n: 'cps-hud', c: 'hud', d: 'licznik kliknięć lpm i ppm' },
+  { n: 'keystrokes', c: 'hud', d: 'podgląd klawiszy i przycisków myszy' },
+  { n: 'armor-hud', c: 'hud', d: 'stan zbroi i wytrzymałość' },
+  { n: 'arraylist', c: 'hud', d: 'lista włączonych modułów' },
+  // glitches (1)
+  { n: 'speedglitch', c: 'glitches', d: 'snap prędkości raz na skok' },
 ];
 const VERSIONS = ['26.2','26.1.2','26.1.1','26.1','1.21.11','1.21.10','1.21.9','1.21.8','1.21.7','1.21.6','1.21.5','1.21.4','1.21.3','1.21.2','1.21.1','1.21','1.20.6','1.20.5','1.20.4','1.20.3','1.20.2','1.20.1','1.20','1.19.4','1.19.3','1.19.2','1.19.1','1.19','1.18.2','1.18.1','1.18','1.17.1','1.17','1.16.5','1.16.4','1.16.3','1.16.2','1.16.1','1.16','1.15.2','1.15.1','1.15','1.14.4','1.14.3','1.14.2','1.14.1','1.14','1.13.2','1.13.1','1.13','1.12.2','1.12.1','1.12','1.11.2','1.11.1','1.11','1.10.2','1.10.1','1.10','1.9.4','1.9.3','1.9.2','1.9.1','1.9','1.8.9','1.8.8','1.8.7','1.8.6','1.8.5','1.8.4','1.8.3','1.8.2','1.8.1','1.8'];
 
@@ -74,7 +76,7 @@ document.querySelectorAll('.qa button').forEach(b => b.onclick = () => {
 // latest release
 fetch('https://api.github.com/repos/poloniumclient/polonium/releases/latest')
   .then(r => r.ok ? r.json() : null)
-  .then(d => { if (d && d.tag_name) document.getElementById('latest').textContent = d.tag_name; })
+  .then(d => { if (d && d.tag_name) { document.getElementById('latest').textContent = d.tag_name; const t = document.getElementById('latest-top'); if (t) t.textContent = d.tag_name; } })
   .catch(() => {});
 
 // liczniki
