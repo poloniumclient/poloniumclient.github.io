@@ -17,7 +17,7 @@ const MODS = [
   { n: 'mlg', c: 'movement', d: 'auto-woda i pajęczyna' },
   { n: 'elytraboost', c: 'movement', d: 'rocket boost w locie' },
   { n: 'antivoid', c: 'movement', d: 'wyjście przed voidem' },
-  { n: 'speedglitch', c: 'glitches', d: 'flick yaw +-45 co tick' },
+  { n: 'speedglitch', c: 'glitches', d: 'snap yaw +-45 raz na jump' },
   { n: 'jumpglitch', c: 'movement', d: 'skok 1.5 kratki' },
   { n: 'pearlclutch', c: 'movement', d: 'perła ratunkowa' },
   { n: 'esp', c: 'hud', d: 'boxy graczy i mobów' },
