@@ -9,7 +9,7 @@ const MODS = [
   { n: 'autoweapon', c: 'combat', d: 'broń i tool pod celownik' },
   { n: 'autototem', c: 'combat', d: 'totem automatycznie do offhanda' },
   { n: 'autopot', c: 'combat', d: 'auto splash-heal w walce' },
-  { n: 'autocrystal', c: 'combat', d: 'kryształy: place i break, range i min-dmg' },
+  { n: 'crystal aura', c: 'combat', d: 'automatyczne wybuchanie crystali' },
   // player (2)
   { n: 'autoarmor', c: 'player', d: 'zakłada najlepszą zbroję' },
   { n: 'autogg', c: 'player', d: 'wysyła gg po killu' },
