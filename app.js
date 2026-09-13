@@ -1,5 +1,5 @@
 const MODS = [
-  // combat (10)
+  // combat (11)
   { n: 'killaura', c: 'combat', d: 'auto-atak ghost, pvp 1.8 / 1.9' },
   { n: 'reach', c: 'combat', d: 'większy zasięg ataku' },
   { n: 'velocity', c: 'combat', d: 'mniejszy odrzut po hitach' },
@@ -10,6 +10,7 @@ const MODS = [
   { n: 'autototem', c: 'combat', d: 'totem automatycznie do offhanda' },
   { n: 'autopot', c: 'combat', d: 'auto splash-heal w walce' },
   { n: 'crystal aura', c: 'combat', d: 'automatyczne wybuchanie crystali' },
+  { n: 'anchor aura', c: 'combat', d: 'kotwice odrodzenia + glowstone' },
   // player (2)
   { n: 'autoarmor', c: 'player', d: 'zakłada najlepszą zbroję' },
   { n: 'autogg', c: 'player', d: 'wysyła gg po killu' },
