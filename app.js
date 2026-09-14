@@ -30,9 +30,24 @@ const MODS = [
 ];
 const VERSIONS = ['26.2','26.1.2','26.1.1','26.1','1.21.11','1.21.10','1.21.9','1.21.8','1.21.7','1.21.6','1.21.5','1.21.4','1.21.3','1.21.2','1.21.1','1.21','1.20.6','1.20.5','1.20.4','1.20.3','1.20.2','1.20.1','1.20','1.19.4','1.19.3','1.19.2','1.19.1','1.19','1.18.2','1.18.1','1.18','1.17.1','1.17','1.16.5','1.16.4','1.16.3','1.16.2','1.16.1','1.16','1.15.2','1.15.1','1.15','1.14.4','1.14.3','1.14.2','1.14.1','1.14','1.13.2','1.13.1','1.13','1.12.2','1.12.1','1.12','1.11.2','1.11.1','1.11','1.10.2','1.10.1','1.10','1.9.4','1.9.3','1.9.2','1.9.1','1.9','1.8.9','1.8.8','1.8.7','1.8.6','1.8.5','1.8.4','1.8.3','1.8.2','1.8.1','1.8'];
 
-const html = VERSIONS.map(v => `<span>${v}</span>`).join('');
-document.getElementById('vlist').innerHTML = html;
-document.getElementById('vlist2').innerHTML = html;
+// Grupowanie w glowne linie: 1.8.x, 1.9.x ... 1.21.x, 26.x
+function majorOf(v) {
+  if (String(v).indexOf('26.') === 0) return '26.x';
+  const p = String(v).split('.');
+  return p[0] + '.' + (p[1] || '0') + '.x';
+}
+const VGROUPS = [];
+VERSIONS.forEach(v => {
+  const m = majorOf(v);
+  let g = VGROUPS.find(g => g.m === m);
+  if (!g) { g = { m, vs: [] }; VGROUPS.push(g); }
+  g.vs.push(v);
+});
+const vhtml = VGROUPS.map(g =>
+  `<div class="vg"><b>${g.m}</b><i>${g.vs.length}</i><div>${g.vs.map(v => `<span>${v}</span>`).join('')}</div></div>`
+).join('');
+document.getElementById('vlist').innerHTML = vhtml;
+document.getElementById('vlist2').innerHTML = vhtml;
 document.getElementById('year').textContent = new Date().getFullYear();
 
 function renderMods(cat) {
